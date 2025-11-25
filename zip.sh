@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# LARS: wenn dein shellcheck failed, mach ihn am besten ganz aus. Ansonsten kannst du einfach die Shell Selection entfernen, den shebang zurück auf #!/bin/bash setzen, und dann "git update-index --assume-unchanged zip.sh", dann ignoriert git deine lokalen Änderungen (außer es gibt eine Änderung Upstream, dann manuelles merge)
-
 # needed packages: isutf8 from moreutils, autopep8, flake8, cbfmt, mdformat (myst flavour) (nix: mdformat-wrapped)
 # install on debian based systems: 
 #sudo apt install moreutils python3-autopep8 flake8 pipx cargo; pipx install mdformat; pipx inject mdformat mdformat-myst; cargo install cbfmt
