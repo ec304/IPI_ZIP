@@ -41,7 +41,7 @@ mkdir "$WORKING_DIR" # This would again fail if the dir existed. Either way, we 
 # cp -r "$ZETTEL"/* "$WORKING_DIR"/ # Copy all files into the working dir with structure
 # Instead, only copy the files that match our exclude patterns. Use gnu cp for the --parents switch, so that the file structure gets recreated. Does not copy empty dirs, but otherwise should copy all matching files with their parent structure. (Which then gets deleted later if matching to our structure, see line 64 unpacking)
 cd "$ZETTEL"
-find . -type f $(printf "! -wholename %s " $(cat ../exclude.lst)) -exec cp --parents {} ../"$WORKING_DIR"/ \;
+find . -type f,l $(printf "! -wholename %s " $(cat ../exclude.lst)) -exec cp -L --parents {} ../"$WORKING_DIR"/ \; # -L : Dereference Symlinks, so also need type f,l (files, links)
 cd ..
 
 cp ./mitglieder.txt "$WORKING_DIR"/ # Copy the global mitglieder.txt into our working dir
